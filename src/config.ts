@@ -57,7 +57,7 @@ export const FOOTER = {
 };
 
 export function getLanguageFromPath(URL){
-    const lang = URL.pathname.split("/")[1];
+    const lang = URL.pathname.split("/").at(1);
     return lang;
 }
 
