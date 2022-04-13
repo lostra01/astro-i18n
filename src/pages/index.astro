@@ -1,0 +1,8 @@
+---
+import {KNOWN_LANGUAGES} from '../config.ts';
+---
+<script is:inline define:vars={{KNOWN_LANGUAGES}}>
+    const navLang = navigator.language || navigator.userLanguage;
+    const lang = (navLang != undefined) ? (navLang in KNOWN_LANGUAGES) ? navLang.substring(0,2) : 'en' : 'en';
+    window.location.pathname = `/${lang}/home`;
+</script>

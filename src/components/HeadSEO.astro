@@ -1,0 +1,45 @@
+---
+import {getLanguageFromPath, SITE, OG_SEO} from '../config.ts';                         // Pull in default values from config file
+const language = getLanguageFromPath(Astro.canonicalURL);
+const {content ={}} = Astro.props;                                                      // Get Astro props as well to override default config files
+const PageTitle = content.title ? content.title : SITE.title;                           // Option to Override page title
+const PageDescription = content.description ? content.description : SITE.description;   // Option to Override page description      
+const ImageSrc = content.seo_image_src ? content.seo_image_src : OG_SEO.image.src;      // Option to Override preview image
+const ImageAlt = content.seo_image_alt ? content.seo_image_alt : OG_SEO.image.alt;      // Option to Override preview image alt
+const Keywords = content.seo_keywords ? content.seo_keywords : SITE.keywords;           // Option to Override page keywords
+const PageAuthor = content.author ? content.author : SITE.author;                       // Option to Override page author
+const PageCopyright = content.copyright ? content.copyright : SITE.copyright;           // Option to Override copyright owner of the page
+const ReplyTo = content.reply_to ? content.reply_to : SITE['reply-to'];                 // Option to Override reply-to address of the page
+---
+
+<!-- Pulls the site URL from astro.config.mjs in the root folder. -->
+<link rel="canonical" href={Astro.site}  /> 
+<meta name="keywords" content={Keywords} />
+<meta name="author" content={PageAuthor} />
+<meta name="copyright" content={PageCopyright} />
+<meta name="reply-to" content={ReplyTo} />
+<meta name="robots" content="all" />
+
+<!-- OpenGraph Tags -->
+<meta property="og:title" content={PageTitle} />
+<meta property="og:type" content="article" />
+<meta property="og:url" content={Astro.canonicalURL.origin} />
+<meta property="og:locale" content={language} />
+<meta property="og:image" content={ImageSrc} />
+<meta property="og:image:alt" content={ImageAlt} />
+<meta name="description" property="og:description" content={PageDescription} />
+<meta property="og:site_name" content={PageTitle} />
+
+<!-- Twitter Tags -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content={OG_SEO.twitter} />
+<meta name="twitter:title" content={PageTitle} />
+<meta name="twitter:description" content={PageDescription} />
+<meta name="twitter:image" content={ImageSrc} />
+<meta name="twitter:image:alt" content={ImageAlt} />
+
+<title>{PageTitle}</title>
+
+
+
+

@@ -1,0 +1,61 @@
+---
+import {getLanguageFromPath, TOPNAV, SITE} from '../config.ts';
+const language = getLanguageFromPath(Astro.canonicalURL);
+const TopnavTranslation = TOPNAV[language];
+---
+
+<div class="topnav">
+    <div class="title">{SITE.title}</div>
+    <div class="menu-wrapper">
+        <a href={`/${language}/home`}>{TopnavTranslation.home}</a>
+        <a href={`/${language}/products`}>{TopnavTranslation.products}</a>
+    </div>
+    <div class="language-wrapper">
+        <a href={`/en/${Astro.canonicalURL.pathname.substring(4)}`} class="fi fi-gb"></a>
+        <a href={`/de/${Astro.canonicalURL.pathname.substring(4)}`} class="fi fi-de"></a>
+        <a href={`/no/${Astro.canonicalURL.pathname.substring(4)}`} class="fi fi-no"></a>
+    </div>
+</div>
+<style>
+.topnav{
+    box-sizing: border-box;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 5vw 0px 5vw;
+    font-family: sans-serif;
+    z-index: 2;
+}
+.title{
+    font-size: 3.25vh;
+    font-weight: bold;
+    width: 50%;
+    color: rgba(250,250,250,0.9);
+}
+.menu-wrapper{
+    width: 15%;
+    justify-content: space-between;
+    display: flex;
+    font-size: 2vh;
+}
+.menu-wrapper > a{
+    cursor: pointer;
+    color: rgba(250,250,250,0.9);
+}
+.menu-wrapper > a:hover{
+    text-decoration: underline;
+}
+.language-wrapper{
+    width: 10%;
+    display: flex;
+    justify-content: space-around;
+}
+.language-wrapper > a{
+    cursor:pointer;
+}
+</style>

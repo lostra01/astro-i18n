@@ -1,0 +1,44 @@
+---
+import BaseLayout from './BaseLayout.astro';
+const {content} = Astro.props;
+const SEO = {
+    title: content.SEO_title,
+    description: content.SEO_description
+};
+---
+<BaseLayout SEO={SEO}>
+    <div class="content">
+        <div class="paragraph">
+            <h1>{content.title}</h1>
+            <p>{content.paragraph}</p>
+            <p>{content.comment}</p>
+        </div>
+    </div>
+</BaseLayout>
+
+<style>
+.content{
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgba(250,250,250,0.9);
+}
+.paragraph{
+    width: 90vw;
+    height: 60vh;
+    font-family: sans-serif;
+}
+h1{
+    font-size: 4vh;
+    margin-top: 5vh;
+    margin-bottom: 15vh;
+}
+p{
+    width: 100%; 
+    margin-top: 5vh;
+    font-size: 2.5vh;
+}
+</style>

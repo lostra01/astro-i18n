@@ -1,0 +1,29 @@
+---
+import HeadCommon from '../components/HeadCommon.astro';
+import HeadSEO from '../components/HeadSEO.astro';
+import Topnav from '../components/Topnav.astro';
+import Footer from '../components/Footer.astro';
+
+const {SEO} = Astro.props;
+---
+
+<html>
+    <head>
+        <HeadCommon />
+        <HeadSEO content={SEO}/>
+    </head>
+    <body style="overflow:hidden">
+        <Topnav />
+        <slot />
+        <Footer />
+    </body>
+</html>
+
+<style>
+body{
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    background: fixed linear-gradient(180deg, hsl(256,27%,19%), hsl(251,29%,11%));
+}
+</style>

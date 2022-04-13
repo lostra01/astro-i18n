@@ -1,0 +1,31 @@
+---
+import {getLanguageFromPath, FOOTER, SITE} from '../config.ts';
+const language = getLanguageFromPath(Astro.canonicalURL);
+const FooterTranslation = FOOTER[language];
+---
+<div class="footer">
+    <a href="#">{FooterTranslation.terms}</a>
+    <a href="#">{FooterTranslation.privacy}</a>
+    <p>{SITE.copyright} - {FooterTranslation.copyright}</p>
+</div>
+
+<style>
+.footer{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 100px;
+    width: 100vw;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-family: sans-serif;
+    font-size: 2vh;
+    z-index: 2;
+    color: rgba(250,250,250,0.9);
+}
+.footer > a{
+    cursor: pointer;
+    color: rgba(250,250,250,0.9);
+}
+</style>

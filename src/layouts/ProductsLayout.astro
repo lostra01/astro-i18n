@@ -1,0 +1,91 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import {getLanguageFromPath} from '../config.ts';
+const language = getLanguageFromPath(Astro.canonicalURL);
+const {content} = Astro.props;
+const DomainExtension = (language == 'en') ? '.com' : (language == 'de') ? '.de' : '.no';
+---
+<BaseLayout>
+<div class="content">
+    <div class="paragraph">
+        <h1>{content.title}</h1>
+        <h2>{content.paragraph}</h2>
+        <div class="product-sites">
+            <div class="product-entry">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/d/de/Wikipedia_Logo_1.0.png">
+                <div class="product-title">Wikipedia - {content.officialPage}</div>
+                <div class="product-overlay" onclick="openProduct('wikipedia')"></div>
+            </div>
+            <div class="product-entry">
+                <img src="https://i.pinimg.com/originals/06/c4/f7/06c4f70ec5931e2342e703e8a3f0a253.png">
+                <div class="product-title">Weather - {content.officialPage}</div>
+                <div class="product-overlay" onclick="openProduct('weather')"></div>
+            </div>
+        </div>
+    </div>
+
+</div>
+</BaseLayout>
+<script is:inline define:vars={{DomainExtension}}>
+function openProduct(product){
+    window.open(`https://www.${product}${DomainExtension}`, '_blank');
+}
+</script>
+<style>
+.content{
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgba(250,250,250,0.9);
+}
+.paragraph{
+    width: 90vw;
+    height: 60vh;
+    font-family: sans-serif;
+}
+.product-sites{
+    margin-top: 5vh;
+    height: 300px;
+    width:  650px;
+    display: flex;
+    justify-content: space-between;
+}
+.product-entry{
+    height: 300px;
+    width: 300px;
+    border-radius: 20px;
+    position: relative;
+}
+.product-title{
+    box-sizing: border-box;
+    position: absolute;
+    bottom: 0;
+    padding-bottom: 3vh;
+    padding-left: 2vh;
+    font-size: 2vh;
+    text-shadow: 2px 2px black;
+    width: 100%;
+    padding-top: 3vh;
+    background: rgba(0,0,0,0.6);
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+.product-entry > img{
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 20px;
+}
+.product-overlay{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0; top: 0;
+    z-index: 3;
+    cursor: pointer;
+}
+</style>
