@@ -1,32 +1,38 @@
 # Astro Starter Kit: i18n
 
+An Astro only i18n implementation that is easy to use, and highly customisable. 
+
 ```
 npm init astro -- --template i18n
 ```
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/i18n)
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## 🔎 Project Overview
 
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
+```tree
+src/
+├── components
+│   ├── Footer.astro
+│   ├── HeadCommon.astro
+│   ├── HeadSEO.astro
+│   └── Topnav.astro
+├── config.ts
+├── layouts
+│   ├── BaseLayout.astro
+│   ├── HomeLayout.astro
+│   └── ProductsLayout.astro
+└── pages
+    ├── de
+    │   ├── home.md
+    │   └── products.md
+    ├── en
+    │   ├── home.md
+    │   └── products.md
+    ├── index.astro
+    └── no
+        ├── home.md
+        └── products.md
 ```
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-│
-└── package.json
-```
-
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
-
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-Any static assets, like images, can be placed in the `public/` directory.
 
 ## 🧞 Commands
 
@@ -38,6 +44,8 @@ All commands are run from the root of the project, from a terminal:
 | `npm run dev`     | Starts local dev server at `localhost:3000`  |
 | `npm run build`   | Build your production site to `./dist/`      |
 | `npm run preview` | Preview your build locally, before deploying |
+
+
 
 ## 👀 Want to learn more?
 
